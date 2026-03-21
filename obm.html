@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motionworks for Orange Barrel Media | Independent OOH Measurement That Increases Yield</title>
+  <style>
+    :root {
+      --bg: #0a1020;
+      --panel: #111a33;
+      --panel-2: #132142;
+      --text: #eaf0ff;
+      --muted: #b4c0de;
+      --accent: #43d2ff;
+      --accent-2: #7cf0c7;
+      --line: #25365f;
+      --danger: #ff6f91;
+      --success: #56e39f;
+      --warning: #ffcf66;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #070c19 0%, #0a1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 68px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .eyebrow {
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 14px; }
+
+    h1 { font-size: clamp(2rem, 4.2vw, 3.5rem); max-width: 12ch; }
+    h2 { font-size: clamp(1.6rem, 2.8vw, 2.3rem); }
+    h3 { font-size: 1.15rem; }
+
+    p { color: var(--muted); margin: 0 0 16px; }
+
+    .hero {
+      padding: 82px 0 62px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: start;
+    }
+
+    .hero-card, .panel {
+      background: linear-gradient(160deg, rgba(66,104,190,.17), rgba(34,53,103,.22));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      border: 1px solid rgba(124,240,199,.35);
+      color: var(--accent-2);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(124,240,199,.08);
+    }
+
+    .hero-copy .lede {
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      max-width: 52ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: .15s ease;
+    }
+
+    .btn-primary {
+      color: #051427;
+      background: linear-gradient(90deg, var(--accent), #83f5ff);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .metric-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .metric-list li {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .metric-list strong {
+      display: block;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .why-grid,
+    .cards,
+    .product-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cards.three,
+    .product-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .block {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      padding: 18px;
+    }
+
+    .block ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      padding: 14px 12px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th:last-child, td:last-child { border-right: none; }
+    tr:last-child td { border-bottom: none; }
+
+    th {
+      background: rgba(67,210,255,.08);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    td.bad { color: #ffc5d2; }
+    td.good { color: #b9ffe2; }
+
+    .chart {
+      background: #0f1730;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 18px;
+    }
+
+    .trust-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .product .impact {
+      color: #d6ffef;
+      font-weight: 600;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 80px 0 96px;
+    }
+
+    .cta .panel {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #9fb2dd;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .why-grid,
+      .cards.three,
+      .product-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section { padding: 52px 0; }
+      .hero { padding: 58px 0 38px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">For OOH Operators Like Orange Barrel Media</div>
+          <h1>Increase yield, prove inventory value, and defend premium CPMs.</h1>
+          <p class="lede">
+            Motionworks gives OOH operators independent audience measurement that turns your best locations into defensible revenue. Use verified impressions, reach, frequency, and behavioral proof to sell outcomes—not assumptions.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Independent Measurement</span>
+            <span class="pill">Audience-Backed Selling</span>
+            <span class="pill">Pricing Power</span>
+            <span class="pill">Campaign Validation</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#cta">Run OBM Inventory Analysis</a>
+            <a class="btn btn-secondary" href="#revenue-impact">See Revenue Impact Model</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h3>What changes when OBM sells with independent proof</h3>
+          <ul class="metric-list">
+            <li>
+              <strong>Higher CPM confidence</strong>
+              Agency teams can justify premium rates when impression quality and exposure are independently verified.
+            </li>
+            <li>
+              <strong>Faster close cycles</strong>
+              Sales teams move from generic traffic claims to audience-backed planning and post-campaign proof.
+            </li>
+            <li>
+              <strong>Stronger renewals and upsell</strong>
+              Validated outcomes create buyer trust, increasing repeat spend and multi-market expansion opportunities.
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="why-matters">
+      <div class="container">
+        <div class="eyebrow">Why This Matters</div>
+        <h2>Measurement is now a revenue lever—not a reporting add-on.</h2>
+        <div class="why-grid">
+          <div class="block">
+            <h3>Increase CPMs with defensible inventory quality</h3>
+            <ul>
+              <li>Show independent audience strength by unit, not broad market averages.</li>
+              <li>Prove high-value placements deserve premium pricing against competing channels.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Build agency trust with transparent, unbiased methodology</h3>
+            <ul>
+              <li>Remove concern that data is self-reported by a media owner.</li>
+              <li>Give planners confidence to allocate more budget to your footprint.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Improve close rates with stronger sales narratives</h3>
+            <ul>
+              <li>Shift pitches from traffic counts to audience behavior and likely attention.</li>
+              <li>Arm account teams with clear planning and proof points that answer procurement scrutiny.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h3>Deliver post-campaign proof that drives renewal</h3>
+            <ul>
+              <li>Validate delivery with impression, reach, and frequency outputs buyers can use.</li>
+              <li>Turn proof of performance into retention, upsell, and annual commitment leverage.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="container">
+        <div class="eyebrow">Business Impact Overview</div>
+        <h2>A unified measurement pipeline that improves pricing, win rates, and retention.</h2>
+        <p>
+          Motionworks transforms mobility, population, and visibility signals into sales-ready evidence. For operators like OBM, this translates directly into better site selection, stronger agency narratives, premium pricing defense, and measurable post-campaign outcomes that protect renewals.
+        </p>
+
+        <div class="cards three">
+          <article class="block">
+            <h3>1) Better site selection</h3>
+            <p>Identify assets with high-value audience concentration and consistent exposure potential before inventory strategy is finalized.</p>
+          </article>
+          <article class="block">
+            <h3>2) Better sales narratives</h3>
+            <p>Convert raw movement data into clear audience stories buyers understand and can compare to campaign objectives.</p>
+          </article>
+          <article class="block">
+            <h3>3) Better pricing and retention</h3>
+            <p>Use independent proof to support premium CPMs upfront and validate outcomes after launch to win follow-on spend.</p>
+          </article>
+        </div>
+
+        <div class="chart" aria-label="Pipeline visualization placeholder">
+          <svg viewBox="0 0 900 220" width="100%" role="img" aria-labelledby="pipelineTitle pipelineDesc">
+            <title id="pipelineTitle">Motionworks business impact pipeline</title>
+            <desc id="pipelineDesc">Data sources flow into products and then into revenue outcomes.</desc>
+            <rect x="20" y="70" width="170" height="80" rx="10" fill="#19264a" stroke="#2d467f"/>
+            <text x="105" y="102" fill="#cbe0ff" text-anchor="middle" font-size="14">Mobility +</text>
+            <text x="105" y="122" fill="#cbe0ff" text-anchor="middle" font-size="14">Behavioral Data</text>
+
+            <rect x="250" y="25" width="140" height="60" rx="10" fill="#1a2f58" stroke="#3462b6"/>
+            <text x="320" y="60" fill="#d4e8ff" text-anchor="middle" font-size="14">Popcast</text>
+
+            <rect x="250" y="95" width="140" height="60" rx="10" fill="#1a2f58" stroke="#3462b6"/>
+            <text x="320" y="130" fill="#d4e8ff" text-anchor="middle" font-size="14">Pathcast</text>
+
+            <rect x="250" y="165" width="140" height="45" rx="10" fill="#1a2f58" stroke="#3462b6"/>
+            <text x="320" y="193" fill="#d4e8ff" text-anchor="middle" font-size="14">Viewcast</text>
+
+            <rect x="450" y="70" width="200" height="80" rx="10" fill="#15365d" stroke="#3a8dcc"/>
+            <text x="550" y="102" fill="#dfffff" text-anchor="middle" font-size="14">Independent Impressions</text>
+            <text x="550" y="122" fill="#dfffff" text-anchor="middle" font-size="14">Reach + Frequency Proof</text>
+
+            <rect x="710" y="70" width="170" height="80" rx="10" fill="#12432f" stroke="#2ba07a"/>
+            <text x="795" y="102" fill="#dcffe6" text-anchor="middle" font-size="14">CPM Lift</text>
+            <text x="795" y="122" fill="#dcffe6" text-anchor="middle" font-size="14">Renewal Growth</text>
+
+            <line x1="190" y1="110" x2="250" y2="55" stroke="#4f73bb" stroke-width="2"/>
+            <line x1="190" y1="110" x2="250" y2="125" stroke="#4f73bb" stroke-width="2"/>
+            <line x1="190" y1="110" x2="250" y2="187" stroke="#4f73bb" stroke-width="2"/>
+            <line x1="390" y1="55" x2="450" y2="95" stroke="#4f73bb" stroke-width="2"/>
+            <line x1="390" y1="125" x2="450" y2="110" stroke="#4f73bb" stroke-width="2"/>
+            <line x1="390" y1="187" x2="450" y2="125" stroke="#4f73bb" stroke-width="2"/>
+            <line x1="650" y1="110" x2="710" y2="110" stroke="#59c2a0" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="revenue-impact">
+      <div class="container">
+        <div class="eyebrow">Revenue Impact</div>
+        <h2>Without independent proof, pricing stalls. With it, pricing becomes defensible.</h2>
+        <p>Use this framework in agency and procurement conversations to show why OBM inventory commands premium rates.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Commercial Scenario</th>
+              <th>Without Motionworks</th>
+              <th>With Motionworks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>How inventory is sold</td>
+              <td class="bad">Estimated traffic and broad market assumptions.</td>
+              <td class="good">Independent, audience-backed selling with unit-level evidence.</td>
+            </tr>
+            <tr>
+              <td>Planning confidence</td>
+              <td class="bad">Generic mobility claims with limited relevance to campaign goals.</td>
+              <td class="good">Behavioral and movement proof tied to target audience opportunity.</td>
+            </tr>
+            <tr>
+              <td>Pricing negotiation</td>
+              <td class="bad">Weak CPM defense under procurement pressure.</td>
+              <td class="good">Defensible premium CPMs supported by transparent methodology.</td>
+            </tr>
+            <tr>
+              <td>Post-campaign reporting</td>
+              <td class="bad">No credible validation beyond flight completion.</td>
+              <td class="good">Campaign validation with impressions, reach, and frequency outputs.</td>
+            </tr>
+            <tr>
+              <td>Renewals and upsell</td>
+              <td class="bad">One-off buying with low data confidence.</td>
+              <td class="good">Performance proof that supports repeat spend and larger commitments.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="eyebrow">Trust & Positioning</div>
+        <h2>Built as the independent measurement layer for the OOH market.</h2>
+        <div class="cards">
+          <article class="block">
+            <h3>Independent by design</h3>
+            <p>Motionworks is not a media owner. That independence reduces perceived bias and increases confidence from agency planning and procurement teams.</p>
+            <ul class="trust-list">
+              <li>Third-party methodology aligned to buyer expectations.</li>
+              <li>Transparent assumptions suitable for scrutiny.</li>
+            </ul>
+          </article>
+          <article class="block">
+            <h3>Aligned to AMS-ready buying standards</h3>
+            <p>Supports the market shift toward impression-based buying with outputs that map to reach, frequency, and GRP planning requirements.</p>
+            <ul class="trust-list">
+              <li>Improves comparability across channels.</li>
+              <li>De-risks future transitions in measurement requirements.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="eyebrow">Product Suite</div>
+        <h2>Three products that convert data into commercial leverage.</h2>
+
+        <div class="product-grid">
+          <article class="block product">
+            <h3>Popcast</h3>
+            <p>Population and audience indexing that identifies where your highest-value impressions are most likely to be delivered.</p>
+            <p class="impact">Business impact: Better site decisions raise inventory quality, which directly improves achievable CPM across your portfolio.</p>
+          </article>
+          <article class="block product">
+            <h3>Pathcast</h3>
+            <p>Movement and exposure modeling that links audience pathways to specific inventory opportunities.</p>
+            <p class="impact">Business impact: Defensible exposure pathways strengthen pricing justification in agency negotiations and procurement review.</p>
+          </article>
+          <article class="block product">
+            <h3>Viewcast</h3>
+            <p>Independent campaign delivery outputs built for post-buy accountability and performance communication.</p>
+            <p class="impact">Business impact: Campaign proof increases renewal confidence, creating clearer upsell paths and longer-term commitments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="cta">
+      <div class="container">
+        <div class="panel">
+          <div class="eyebrow">Next Step for OBM</div>
+          <h2>Run an OBM inventory analysis and identify where your assets are underpriced.</h2>
+          <p>
+            Evaluate your top inventory in 24 hours with independent measurement outputs your sales team can use immediately in live opportunities.
+          </p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="mailto:team@motionworks.ai?subject=Run%20OBM%20Inventory%20Analysis">Run OBM Inventory Analysis</a>
+            <a class="btn btn-secondary" href="mailto:team@motionworks.ai?subject=Evaluate%20Top%20Assets%20in%2024%20Hours">Evaluate Top Assets in 24 Hours</a>
+          </div>
+          <p class="small">Includes inventory-level opportunity map, premium pricing opportunities, and campaign-proof reporting framework.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Preserve simple interaction hooks and avoid structural JS dependencies.
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        var targetId = this.getAttribute('href');
+        var target = document.querySelector(targetId);
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
